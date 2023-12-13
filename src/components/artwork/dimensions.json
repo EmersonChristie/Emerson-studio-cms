@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_artwork_dimensions",
+  "info": {
+    "displayName": "Dimensions"
+  },
+  "options": {},
+  "attributes": {
+    "height": {
+      "type": "decimal"
+    },
+    "width": {
+      "type": "decimal"
+    },
+    "depth": {
+      "type": "decimal"
+    },
+    "dimensions": {
+      "type": "string"
+    }
+  }
+}

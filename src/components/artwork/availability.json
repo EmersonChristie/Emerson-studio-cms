@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_artwork_availabilities",
+  "info": {
+    "displayName": "Availability"
+  },
+  "options": {},
+  "attributes": {
+    "isAvailable": {
+      "type": "boolean"
+    },
+    "availability": {
+      "type": "enumeration",
+      "enum": [
+        "Available",
+        "Unavailable",
+        "Sold",
+        "On Loan",
+        "On Consignment"
+      ],
+      "default": "Available"
+    }
+  }
+}
