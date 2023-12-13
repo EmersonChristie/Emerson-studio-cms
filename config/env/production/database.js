@@ -2,7 +2,12 @@ const { URL } = require("url");
 
 // Parse the connection string
 const databaseUrl = process.env.DATABASE_URL;
+if (!databaseUrl) {
+  console.log("DATABASE_URL not set");
+  throw new Error("DATABASE_URL not set");
+}
 const parsedUrl = new URL(databaseUrl);
+console.log(parsedUrl);
 
 module.exports = ({ env }) => ({
   connection: {
