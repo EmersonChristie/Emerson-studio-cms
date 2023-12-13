@@ -18,11 +18,12 @@ export interface ArtworkDimensions extends Schema.Component {
   collectionName: 'components_artwork_dimensions';
   info: {
     displayName: 'Dimensions';
+    description: '';
   };
   attributes: {
-    height: Attribute.Decimal;
-    width: Attribute.Decimal;
-    depth: Attribute.Decimal;
+    height: Attribute.Integer;
+    width: Attribute.Integer;
+    depth: Attribute.Decimal & Attribute.DefaultTo<2>;
     dimensions: Attribute.String;
   };
 }
