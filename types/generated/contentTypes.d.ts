@@ -683,13 +683,13 @@ export interface ApiArtistArtist extends Schema.CollectionType {
     singularName: 'artist';
     pluralName: 'artists';
     displayName: 'Artist';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    firstName: Attribute.String;
-    lastName: Attribute.String;
+    name: Attribute.String;
     mainImage: Attribute.Media;
     yearBorn: Attribute.Integer;
     country: Attribute.String;
@@ -736,6 +736,10 @@ export interface ApiArtworkArtwork extends Schema.CollectionType {
     description: Attribute.Text;
     availability: Attribute.Component<'artwork.availability'>;
     mainImage: Attribute.Media;
+    genre: Attribute.Enumeration<
+      ['Abstract', 'Landscape', 'Seascape', 'Figurative']
+    >;
+    series: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

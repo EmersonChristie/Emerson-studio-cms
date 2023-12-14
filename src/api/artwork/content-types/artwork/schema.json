@@ -45,14 +45,27 @@
       "component": "artwork.availability"
     },
     "mainImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "genre": {
+      "type": "enumeration",
+      "enum": [
+        "Abstract",
+        "Landscape",
+        "Seascape",
+        "Figurative"
+      ]
+    },
+    "series": {
+      "type": "string"
     }
   }
 }
