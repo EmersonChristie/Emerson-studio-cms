@@ -740,6 +740,8 @@ export interface ApiArtworkArtwork extends Schema.CollectionType {
       ['Abstract', 'Landscape', 'Seascape', 'Figurative']
     >;
     series: Attribute.String;
+    sendToWebsite: Attribute.Boolean;
+    featuredArtwork: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

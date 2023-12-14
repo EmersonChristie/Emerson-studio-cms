@@ -66,6 +66,12 @@
     },
     "series": {
       "type": "string"
+    },
+    "sendToWebsite": {
+      "type": "boolean"
+    },
+    "featuredArtwork": {
+      "type": "boolean"
     }
   }
 }
