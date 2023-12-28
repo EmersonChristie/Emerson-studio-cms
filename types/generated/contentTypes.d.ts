@@ -742,6 +742,11 @@ export interface ApiArtworkArtwork extends Schema.CollectionType {
     series: Attribute.String;
     sendToWebsite: Attribute.Boolean;
     featuredArtwork: Attribute.Boolean;
+    inquiries: Attribute.Relation<
+      'api::artwork.artwork',
+      'manyToMany',
+      'api::inquiry.inquiry'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -775,13 +780,22 @@ export interface ApiContactContact extends Schema.CollectionType {
     firstName: Attribute.String;
     lastName: Attribute.String;
     email: Attribute.Email;
-    phoneNumber: Attribute.String;
+    phone: Attribute.String;
     websiteUser: Attribute.Relation<
       'api::contact.contact',
       'oneToOne',
       'plugin::users-permissions.user'
     >;
     address: Attribute.Component<'location.address', true>;
+    inquiries: Attribute.Relation<
+      'api::contact.contact',
+      'oneToMany',
+      'api::inquiry.inquiry'
+    >;
+    contactPreferences: Attribute.Component<'contact.contact-preferences'> &
+      Attribute.Required &
+      Attribute.Private;
+    name: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -793,6 +807,99 @@ export interface ApiContactContact extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::contact.contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiEmailEmail extends Schema.CollectionType {
+  collectionName: 'emails';
+  info: {
+    singularName: 'email';
+    pluralName: 'emails';
+    displayName: 'Email';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contact: Attribute.Relation<
+      'api::email.email',
+      'oneToOne',
+      'api::contact.contact'
+    >;
+    type: Attribute.Enumeration<['Newsletter', 'Inquiry']>;
+    deliveryStatus: Attribute.String;
+    subject: Attribute.String;
+    body: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::email.email',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::email.email',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiInquiryInquiry extends Schema.CollectionType {
+  collectionName: 'inquiries';
+  info: {
+    singularName: 'inquiry';
+    pluralName: 'inquiries';
+    displayName: 'Inquiry';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contact: Attribute.Relation<
+      'api::inquiry.inquiry',
+      'manyToOne',
+      'api::contact.contact'
+    >;
+    artworks: Attribute.Relation<
+      'api::inquiry.inquiry',
+      'manyToMany',
+      'api::artwork.artwork'
+    >;
+    message: Attribute.Text;
+    status: Attribute.Enumeration<
+      ['New', 'In Progress', 'Resolved', 'Closed']
+    > &
+      Attribute.DefaultTo<'New'>;
+    priority: Attribute.Enumeration<['High', 'Neutral', 'Low']> &
+      Attribute.DefaultTo<'High'>;
+    responseSent: Attribute.Boolean;
+    followUpNotes: Attribute.Text;
+    additionalNotes: Attribute.Text;
+    source: Attribute.String & Attribute.DefaultTo<'Website'>;
+    inquiryCategory: Attribute.Enumeration<
+      ['Pricing', 'General Inquiry', 'Commission']
+    >;
+    inquiryDate: Attribute.DateTime;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::inquiry.inquiry',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::inquiry.inquiry',
       'oneToOne',
       'admin::user'
     > &
@@ -819,6 +926,8 @@ declare module '@strapi/types' {
       'api::artist.artist': ApiArtistArtist;
       'api::artwork.artwork': ApiArtworkArtwork;
       'api::contact.contact': ApiContactContact;
+      'api::email.email': ApiEmailEmail;
+      'api::inquiry.inquiry': ApiInquiryInquiry;
     }
   }
 }

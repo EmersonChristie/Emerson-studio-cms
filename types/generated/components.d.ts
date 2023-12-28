@@ -39,6 +39,29 @@ export interface ArtworkPrice extends Schema.Component {
   };
 }
 
+export interface ContactContactPreferences extends Schema.Component {
+  collectionName: 'components_contact_contact_preferences';
+  info: {
+    displayName: 'contactPreferences';
+    icon: 'user';
+    description: '';
+  };
+  attributes: {
+    optInSMS: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    recievesNewsletter: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    recievesSalesEmails: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<true>;
+    hasUnsubscribed: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+  };
+}
+
 export interface LocationAddress extends Schema.Component {
   collectionName: 'components_location_addresses';
   info: {
@@ -72,6 +95,7 @@ declare module '@strapi/types' {
       'artwork.availability': ArtworkAvailability;
       'artwork.dimensions': ArtworkDimensions;
       'artwork.price': ArtworkPrice;
+      'contact.contact-preferences': ContactContactPreferences;
       'location.address': LocationAddress;
       'location.location': LocationLocation;
     }

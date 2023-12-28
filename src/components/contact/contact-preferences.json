@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_contact_contact_preferences",
+  "info": {
+    "displayName": "contactPreferences",
+    "icon": "user",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "optInSMS": {
+      "type": "boolean",
+      "default": false,
+      "private": true,
+      "required": false
+    },
+    "recievesNewsletter": {
+      "type": "boolean",
+      "default": false,
+      "required": false,
+      "private": true
+    },
+    "recievesSalesEmails": {
+      "type": "boolean",
+      "default": true,
+      "required": false,
+      "private": true
+    },
+    "hasUnsubscribed": {
+      "type": "boolean",
+      "default": false,
+      "required": false,
+      "private": true
+    }
+  }
+}

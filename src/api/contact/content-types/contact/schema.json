@@ -21,7 +21,7 @@
     "email": {
       "type": "email"
     },
-    "phoneNumber": {
+    "phone": {
       "type": "string"
     },
     "websiteUser": {
@@ -33,6 +33,22 @@
       "type": "component",
       "repeatable": true,
       "component": "location.address"
+    },
+    "inquiries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::inquiry.inquiry",
+      "mappedBy": "contact"
+    },
+    "contactPreferences": {
+      "type": "component",
+      "repeatable": false,
+      "component": "contact.contact-preferences",
+      "private": true,
+      "required": true
+    },
+    "name": {
+      "type": "string"
     }
   }
 }

@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "inquiries",
+  "info": {
+    "singularName": "inquiry",
+    "pluralName": "inquiries",
+    "displayName": "Inquiry",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "contact": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::contact.contact",
+      "inversedBy": "inquiries"
+    },
+    "artworks": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::artwork.artwork",
+      "inversedBy": "inquiries"
+    },
+    "message": {
+      "type": "text"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "New",
+        "In Progress",
+        "Resolved",
+        "Closed"
+      ],
+      "default": "New"
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": [
+        "High",
+        "Neutral",
+        "Low"
+      ],
+      "default": "High"
+    },
+    "responseSent": {
+      "type": "boolean"
+    },
+    "followUpNotes": {
+      "type": "text"
+    },
+    "additionalNotes": {
+      "type": "text"
+    },
+    "source": {
+      "type": "string",
+      "default": "Website"
+    },
+    "inquiryCategory": {
+      "type": "enumeration",
+      "enum": [
+        "Pricing",
+        "General Inquiry",
+        "Commission"
+      ]
+    },
+    "inquiryDate": {
+      "type": "datetime"
+    }
+  }
+}

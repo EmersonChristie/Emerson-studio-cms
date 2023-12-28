@@ -72,6 +72,12 @@
     },
     "featuredArtwork": {
       "type": "boolean"
+    },
+    "inquiries": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::inquiry.inquiry",
+      "mappedBy": "artworks"
     }
   }
 }
