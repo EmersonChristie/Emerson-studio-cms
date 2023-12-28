@@ -21,7 +21,9 @@ module.exports = () => ({
       <html>
       <body>
         <h1>New Inquiry</h1>
-        <p>Date: ${inquiry.inquiryDate}</p>
+        <p>Date: ${new Date(inquiry.inquiryDate).toLocaleDateString(
+          "en-US"
+        )}</p>
         <p>Inquiry ID: ${inquiry.id}</p>
         ${inquiry.contact.name ? `<p>Name: ${inquiry.contact.name}</p>` : ""}
         ${inquiry.contact.phone ? `<p>Phone: ${inquiry.contact.phone}</p>` : ""}
