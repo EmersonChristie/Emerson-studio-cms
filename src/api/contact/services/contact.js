@@ -7,16 +7,13 @@
 const { createCoreService } = require("@strapi/strapi").factories;
 
 // Validation service
-const { isEmailValid, areOtherFieldsValid } = require("./validation");
+const { isEmailValid } = require("./validation");
 
 module.exports = createCoreService("api::contact.contact", ({ strapi }) => ({
   findOrCreate: async (contactData) => {
     try {
       // Validate contact data
-      if (
-        !isEmailValid(contactData.email) ||
-        !areOtherFieldsValid(contactData)
-      ) {
+      if (!isEmailValid(contactData.email)) {
         throw new Error("Invalid contact data");
       }
 
