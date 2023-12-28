@@ -50,10 +50,10 @@ export interface ContactContactPreferences extends Schema.Component {
     optInSMS: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
-    recievesNewsletter: Attribute.Boolean &
+    receivesNewsletter: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
-    recievesSalesEmails: Attribute.Boolean &
+    receivesSalesEmails: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<true>;
     hasUnsubscribed: Attribute.Boolean &

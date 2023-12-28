@@ -13,13 +13,13 @@
       "private": true,
       "required": false
     },
-    "recievesNewsletter": {
+    "receivesNewsletter": {
       "type": "boolean",
       "default": false,
       "required": false,
       "private": true
     },
-    "recievesSalesEmails": {
+    "receivesSalesEmails": {
       "type": "boolean",
       "default": true,
       "required": false,
