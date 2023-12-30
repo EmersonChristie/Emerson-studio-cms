@@ -792,7 +792,7 @@ export interface ApiContactContact extends Schema.CollectionType {
       'oneToMany',
       'api::inquiry.inquiry'
     >;
-    contactPreferences: Attribute.Component<'contact.contact-preferences'> &
+    preferences: Attribute.Component<'contact.contact-preferences'> &
       Attribute.Required &
       Attribute.Private;
     name: Attribute.String;

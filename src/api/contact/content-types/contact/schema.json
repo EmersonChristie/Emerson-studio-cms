@@ -40,7 +40,7 @@
       "target": "api::inquiry.inquiry",
       "mappedBy": "contact"
     },
-    "contactPreferences": {
+    "preferences": {
       "type": "component",
       "repeatable": false,
       "component": "contact.contact-preferences",
