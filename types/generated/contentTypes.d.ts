@@ -852,6 +852,41 @@ export interface ApiEmailEmail extends Schema.CollectionType {
   };
 }
 
+export interface ApiHomePageSliderHomePageSlider extends Schema.CollectionType {
+  collectionName: 'home_page_sliders';
+  info: {
+    singularName: 'home-page-slider';
+    pluralName: 'home-page-sliders';
+    displayName: 'HomePageSlider';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    coverImage: Attribute.Media;
+    artwork: Attribute.Relation<
+      'api::home-page-slider.home-page-slider',
+      'oneToOne',
+      'api::artwork.artwork'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-page-slider.home-page-slider',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-page-slider.home-page-slider',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiInquiryInquiry extends Schema.CollectionType {
   collectionName: 'inquiries';
   info: {
@@ -927,6 +962,7 @@ declare module '@strapi/types' {
       'api::artwork.artwork': ApiArtworkArtwork;
       'api::contact.contact': ApiContactContact;
       'api::email.email': ApiEmailEmail;
+      'api::home-page-slider.home-page-slider': ApiHomePageSliderHomePageSlider;
       'api::inquiry.inquiry': ApiInquiryInquiry;
     }
   }
