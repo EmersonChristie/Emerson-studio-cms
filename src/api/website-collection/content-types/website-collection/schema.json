@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "website_collections",
+  "info": {
+    "singularName": "website-collection",
+    "pluralName": "website-collections",
+    "displayName": "Website Collection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "artworks": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::artwork.artwork",
+      "inversedBy": "website_collections"
+    }
+  }
+}

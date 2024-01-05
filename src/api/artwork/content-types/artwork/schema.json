@@ -78,6 +78,12 @@
       "relation": "manyToMany",
       "target": "api::inquiry.inquiry",
       "mappedBy": "artworks"
+    },
+    "website_collections": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::website-collection.website-collection",
+      "mappedBy": "artworks"
     }
   }
 }

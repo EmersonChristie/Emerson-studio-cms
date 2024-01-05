@@ -747,6 +747,11 @@ export interface ApiArtworkArtwork extends Schema.CollectionType {
       'manyToMany',
       'api::inquiry.inquiry'
     >;
+    website_collections: Attribute.Relation<
+      'api::artwork.artwork',
+      'manyToMany',
+      'api::website-collection.website-collection'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -942,6 +947,42 @@ export interface ApiInquiryInquiry extends Schema.CollectionType {
   };
 }
 
+export interface ApiWebsiteCollectionWebsiteCollection
+  extends Schema.CollectionType {
+  collectionName: 'website_collections';
+  info: {
+    singularName: 'website-collection';
+    pluralName: 'website-collections';
+    displayName: 'Website Collection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String;
+    artworks: Attribute.Relation<
+      'api::website-collection.website-collection',
+      'manyToMany',
+      'api::artwork.artwork'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::website-collection.website-collection',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::website-collection.website-collection',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -964,6 +1005,7 @@ declare module '@strapi/types' {
       'api::email.email': ApiEmailEmail;
       'api::home-page-slider.home-page-slider': ApiHomePageSliderHomePageSlider;
       'api::inquiry.inquiry': ApiInquiryInquiry;
+      'api::website-collection.website-collection': ApiWebsiteCollectionWebsiteCollection;
     }
   }
 }
