@@ -954,12 +954,13 @@ export interface ApiWebsiteCollectionWebsiteCollection
     singularName: 'website-collection';
     pluralName: 'website-collections';
     displayName: 'Website Collection';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Title: Attribute.String;
+    title: Attribute.String;
     artworks: Attribute.Relation<
       'api::website-collection.website-collection',
       'manyToMany',
