@@ -32,6 +32,7 @@ module.exports = createCoreService("api::contact.contact", ({ strapi }) => ({
 
       // If contact doesn't exist, create a new one
       if (!contact) {
+        console.log("contact service contact doesn't exist, creating new one");
         contact = await strapi.entityService.create("api::contact.contact", {
           data: { ...contactData },
         });

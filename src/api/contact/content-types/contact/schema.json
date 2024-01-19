@@ -44,8 +44,7 @@
       "type": "component",
       "repeatable": false,
       "component": "contact.contact-preferences",
-      "private": true,
-      "required": true
+      "required": false
     },
     "name": {
       "type": "string"
